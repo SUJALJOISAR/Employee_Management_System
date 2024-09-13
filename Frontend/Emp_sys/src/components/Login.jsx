@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import './style.css'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [values,setValues]=useState({
         email:"",
         password:""
     });
+
+    const navigate=useNavigate();
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -17,13 +20,20 @@ const Login = () => {
           email: values.email,
           password: values.password
         })
-        .then((result) => console.log(result))
+        .then(result => {
+          if(result.data.loginStatus){
+            navigate('/dashboard')
+          }else{
+            alert('Invalid Email or Password');
+          }
+        }
+        )
         .catch((err) => console.error(err));
       } else {
         console.error("Please fill in both fields");
       }
     };
-    
+
   return (
     <div className='d-flex justify-content-center align-items-center vh-100 loginPage'>
       <div className='p-3 rounded w-25 border loginForm'>
