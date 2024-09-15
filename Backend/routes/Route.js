@@ -140,6 +140,43 @@ appRouter.delete('/delete_employee/:id',(req,res)=>{
     });
 })
 
+appRouter.get('/admin_count',(req,res)=>{
+    const sql="SELECT COUNT(id) as admin from admin";
+    db.query(sql,(err,result)=>{
+        if(err){return res.json({Status:false,Error:"query Error"}) }
+        return res.json({Status:true,Result:result});
+    })
+})
+
+appRouter.get('/employee_count',(req,res)=>{
+    const sql="SELECT COUNT(id) as employee from employee";
+    db.query(sql,(err,result)=>{
+        if(err){return res.json({Status:false,Error:"query Error"}) }
+        return res.json({Status:true,Result:result});
+    })
+})
+
+appRouter.get('/salary_count',(req,res)=>{
+    const sql="SELECT SUM(salary) as salary from employee";
+    db.query(sql,(err,result)=>{
+        if(err){return res.json({Status:false,Error:"query Error"}) }
+        return res.json({Status:true,Result:result});
+    })
+})
+
+appRouter.get('/admins',(req,res)=>{
+    const sql="SELECT * FROM admin";
+    db.query(sql,(err,result)=>{
+        if(err){return res.json({Status:false,Error:"query Error"}) }
+        return res.json({Status:true,Result:result});
+     })
+})
+
+appRouter.get('/logout',(req,res)=>{
+    res.clearCookie(process.env.COOKIE_NAME);
+    return res.json({Status:true})
+})
+
 
 
 export default appRouter;
