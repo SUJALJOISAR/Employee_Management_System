@@ -16,6 +16,7 @@ app.use(cors({
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(express.static('public'));
 
 app.use('/auth',appRouter);
 
