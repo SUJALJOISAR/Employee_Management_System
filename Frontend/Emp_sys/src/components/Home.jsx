@@ -15,7 +15,7 @@ const Home = () => {
   },[]);
 
   const adminTotal = ()=>{
-    axios.get('/admin_count')
+    axios.get('/auth/admin_count')
     .then((result)=>{
       if(result.data.Status){
         console.log(result);
@@ -26,7 +26,7 @@ const Home = () => {
   }
 
   const employeeTotal = ()=>{
-    axios.get('/employee_count')
+    axios.get('/auth/employee_count')
     .then((result)=>{
       if(result.data.Status){
         console.log(result);
@@ -37,7 +37,7 @@ const Home = () => {
   }
 
   const salaryTotal = ()=>{
-    axios.get('/salary_count')
+    axios.get('/auth/salary_count')
     .then((result)=>{
       if(result.data.Status){
         console.log(result);
@@ -48,7 +48,7 @@ const Home = () => {
   }
 
   const adminRecord=()=>{
-    axios.get('/admins')
+    axios.get('/auth/admins')
     .then(result=>{
       setAdmins(result.data.Result);
     })

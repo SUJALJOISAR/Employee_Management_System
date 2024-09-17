@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Category = () => {
   const [category,setCategory] = useState([]);
   useEffect(()=>{
-    axios.get('/category')
+    axios.get('/auth/category')
     .then((result)=>{
      if(result.data.Status){
       setCategory(result.data.Result);

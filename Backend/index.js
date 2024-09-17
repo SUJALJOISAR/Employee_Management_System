@@ -5,13 +5,14 @@ import { config } from 'dotenv';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 config();
+import employeerouter from './routes/employeeRoute.js';
 
 const app=express();
 
 app.use(cors({
     origin:"http://localhost:5173",
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
-    credentials:true
+    credentials:true,
 }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(morgan("dev"));
 app.use(express.static('public'));
 
 app.use('/auth',appRouter);
+app.use('/employee',employeerouter);
 
 const Port=process.env.PORT;
 app.listen(Port,()=>{

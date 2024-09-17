@@ -17,7 +17,7 @@ const Add_Employee = () => {
     const [category, setCategory] = useState([]);
 
     useEffect(() => {
-        axios.get('/category')
+        axios.get('/auth/category')
             .then((result) => {
                 if (result.data.Status) {
                     setCategory(result.data.Result);
@@ -41,7 +41,7 @@ const Add_Employee = () => {
         formData.append('image',employee.image);
         formData.append('category_id',employee.category_id);
         // console.log('Employee data before sending:', formData);  // Check if category_id is present and not null
-        axios.post('/add_employee', formData)
+        axios.post('/auth/add_employee', formData)
             .then((result) => {
                 if(result.data.Status){
                     navigate("/dashboard/employee");

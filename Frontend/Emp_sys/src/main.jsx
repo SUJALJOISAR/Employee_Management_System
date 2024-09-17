@@ -5,8 +5,8 @@ import './index.css'
 import axios from 'axios';
 import {BrowserRouter} from 'react-router-dom';
 
-axios.defaults.baseURL="http://localhost:5000/auth";
-axios.defaults.withCredentials=false;
+axios.defaults.baseURL="http://localhost:5000";
+axios.defaults.withCredentials=true;
 
 const rootElement = document.getElementById('root');
 if (rootElement) {

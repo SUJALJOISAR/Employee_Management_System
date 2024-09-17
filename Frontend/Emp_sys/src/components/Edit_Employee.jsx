@@ -15,7 +15,7 @@ const Edit_Employee = () => {
 
 const [category,setCategory] = useState([]);
   useEffect(()=>{
-    axios.get('/category')
+    axios.get('/auth/category')
     .then((result)=>{
      if(result.data.Status){
       setCategory(result.data.Result);
@@ -26,7 +26,7 @@ const [category,setCategory] = useState([]);
     })
     .catch((err)=>console.log(err));
 
-    axios.get('/employee/'+id)
+    axios.get('/auth/employee/'+id)
     .then((result)=>{
         setEmployee({
             ...employee,
@@ -41,7 +41,7 @@ const [category,setCategory] = useState([]);
 
   const handleSubmit = (e)=>{
     e.preventDefault();
-    axios.put('/edit_employee/'+id,employee)
+    axios.put('/auth/edit_employee/'+id,employee)
     .then((result)=>{
         // console.log(result.data);
         navigate('/dashboard/employee');

@@ -16,7 +16,7 @@ const Login = () => {
       
       // Ensure that both fields are filled before submitting
       if (values.email && values.password) {
-        axios.post('/adminlogin', {
+        axios.post('/auth/adminlogin', {
           email: values.email,
           password: values.password
         })
@@ -58,10 +58,6 @@ const Login = () => {
                 onChange={(e)=>setValues({...values,password:e.target.value})}/>
             </div>
             <button className='btn btn-success w-100 rounded-0 mb-2'>Login</button>
-            {/* <div className='mb-1'>
-                <input  type="checkbox" name="tick"  id="tick" className='mx-2'/>
-                <label htmlFor="checkbox"><strong>You are Agree with Terms & Conditions</strong></label>
-            </div> */}
         </form>
       </div>
     </div>

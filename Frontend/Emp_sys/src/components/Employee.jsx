@@ -1,13 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Employee = () => {
 
   const [employee,setEmployee]=useState([]);
-  const navigate=useNavigate();
   useEffect(()=>{
-     axios.get('/employee')
+     axios.get('/auth/employee')
      .then((result)=>{
       if(result.data.Status){
         setEmployee(result.data.Result);
@@ -20,7 +19,7 @@ const Employee = () => {
 
 
   const handleDelete = (id)=>{
-    axios.delete('/delete_employee/'+id)
+    axios.delete('/auth/delete_employee/'+id)
     .then((result)=>{
       if(result.data.Status){
         window.location.reload();

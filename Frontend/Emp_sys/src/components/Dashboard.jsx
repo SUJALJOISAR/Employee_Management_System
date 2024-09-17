@@ -7,8 +7,9 @@ import { useNavigate } from 'react-router-dom';
 const Dashboard = () => {
     const navigate=useNavigate();
     axios.defaults.withCredentials=true;
+    
     const handleLogout=()=>{
-        axios.get('/logout')
+        axios.get('/auth/logout')
         .then((result)=>{
             if(result.data.Status){
                 navigate('/adminlogin');
