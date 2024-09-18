@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import Login from './components/Login';
@@ -15,11 +15,12 @@ import Start from './components/Start';
 import EmployeeLogin from './components/EmployeeLogin';
 import EmployeeDetail from './components/EmployeeDetail';
 
+
 function App() {
   return (
     <>
     <Routes>
-      <Route path="/start" element={<Start/>} />
+      <Route path="/" element={<Start/>} />
       <Route path="/adminlogin" element={<Login />}/>
       <Route path="/employeelogin" element={<EmployeeLogin />}/>
       <Route path="/dashboard" element={<Dashboard />}>

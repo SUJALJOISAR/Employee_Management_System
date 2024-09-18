@@ -1,10 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import './style.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Start = () => {
     const navigate=useNavigate();
+
+  useEffect(()=>{
+    axios.get("/verify")
+    .then(result=>{
+      if(result.data.Status){
+        console.log("Verification result:", result.data); // Log the result
+        if(result.data.role === "admin"){
+          navigate('/dashboard');
+        }
+        else{
+          navigate('/employee_detail/'+result.data.id);
+        }
+      }
+    })
+    .catch(err=>console.log(err));
+  })
+
   return (
     <div className='d-flex justify-content-center align-items-center vh-100 loginPage'>
     <div className='p-3 rounded w-25 border loginForm'>

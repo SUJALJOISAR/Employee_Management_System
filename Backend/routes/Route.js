@@ -16,7 +16,7 @@ appRouter.post("/adminlogin",(req,res)=>{
         if(results.length > 0){
             const email = results[0].email;
             const token = jwt.sign(
-                {role:"admin",email:email}, //payload
+                {role:"admin",email:email,id:results[0].id}, //payload
                 process.env.JWT_SECRET,//secret key
                 {expiresIn:"1d"}
             );

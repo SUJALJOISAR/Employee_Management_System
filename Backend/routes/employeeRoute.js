@@ -18,12 +18,12 @@ employeerouter.post("/employeelogin",(req,res)=>{
                 if(err) return res.json({loginStatus:false,Error:"Query Error"});
                 if(response){
                     const email=results[0].email;
-                    const token = jwt.sign(
-                        {role:"employee",email:email}, //payload
+                    const employeetoken = jwt.sign(
+                        {role:"employee",email:email,id:results[0].id}, //payload
                         process.env.JWT_SECRET,//secret key
                         {expiresIn:"1d"}
                     );
-                    res.cookie(process.env.COOKIE_NAME2,token,{
+                    res.cookie(process.env.COOKIE_NAME2,employeetoken,{
                         httpOnly:true,
                         secure:true,
                         signed:true,

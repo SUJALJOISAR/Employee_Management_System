@@ -21,7 +21,7 @@ const EmployeeDetail = () => {
         axios.get('/employee/logout')
         .then(result=>{
             if(result.data.Status){
-                navigate('/start');
+                navigate('/');
             }
         })
     }
