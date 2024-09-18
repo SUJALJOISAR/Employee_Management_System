@@ -21,6 +21,7 @@ const EmployeeDetail = () => {
         axios.get('/employee/logout')
         .then(result=>{
             if(result.data.Status){
+                localStorage.removeItem("valid");
                 navigate('/');
             }
         })
